@@ -1,4 +1,4 @@
-package org.example.Homework7.task1;
+package org.example.Homework8.task1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

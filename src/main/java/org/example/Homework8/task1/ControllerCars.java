@@ -1,4 +1,4 @@
-package org.example.Homework7.task1;
+package org.example.Homework8.task1;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,9 +39,9 @@ public class ControllerCars {
 
 
     @PostMapping("/cars")
-    public ResponseEntity<List<Car>> saveCar(@RequestBody Car car) {
+    public ResponseEntity<Car> saveCar(@RequestBody Car car) {
         this.carList.add(car);
-        return new ResponseEntity<>(this.carList, HttpStatus.CREATED);
+        return new ResponseEntity<>(car, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/cars/{id}")
@@ -58,7 +58,7 @@ public class ControllerCars {
                 result.add(car);
             }
         }
-        return new ResponseEntity<>(carList, HttpStatus.OK);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
     
     @GetMapping("/cars/producer/{value}")

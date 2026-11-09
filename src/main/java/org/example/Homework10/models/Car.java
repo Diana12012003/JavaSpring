@@ -1,4 +1,4 @@
-package org.example.Homework10;
+package org.example.Homework10.models;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import javax.persistence.Id;

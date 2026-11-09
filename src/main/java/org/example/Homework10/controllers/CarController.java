@@ -1,6 +1,8 @@
-package org.example.Homework10;
+package org.example.Homework10.controllers;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import org.example.Homework10.models.Car;
+import org.example.Homework10.service.CarService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -42,21 +44,21 @@ public class CarController{
         }
 
         @DeleteMapping("/{id}")
-        public ResponseEntity<List<Car>> deleteCar(@PathVariable int id) {
+        public ResponseEntity<Void> deleteCar(@PathVariable int id) {
             carService.delete(id);
-            return new ResponseEntity<>(HttpStatus.OK);
+            return ResponseEntity.noContent().build();
         }
 
         @GetMapping("/findby/power/{value}")
         @JsonView(Car.View.Level2.class)
-        public ResponseEntity<List<Car>> FindByPower(@PathVariable int value) {
+        public ResponseEntity<List<Car>> findByPower(@PathVariable int value) {
             List<Car> cars = carService.findByPower(value);
             return new ResponseEntity<>(cars, HttpStatus.OK);
         }
 
         @GetMapping("/findby/producer/{value}")
         @JsonView(Car.View.Level2.class)
-        public ResponseEntity<List<Car>> FindByProducer(@PathVariable String value) {
+        public ResponseEntity<List<Car>> findByProducer(@PathVariable String value) {
         List<Car> cars = carService.findByProducer(value);
         return new ResponseEntity<>(cars, HttpStatus.OK);
     }

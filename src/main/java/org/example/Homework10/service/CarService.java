@@ -1,5 +1,7 @@
-package org.example.Homework10;
+package org.example.Homework10.service;
 
+import org.example.Homework10.dao.CarDAO;
+import org.example.Homework10.models.Car;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -15,7 +17,11 @@ public class CarService{
     }
 
     public Car findOne(int id) {
-        return carDAO.findOne(id);
+        Car car = carDAO.findOne(id);
+        if (car == null) {
+            throw new RuntimeException("Авто з таким id не знайдено");
+        }
+        return car;
     }
 
     public void save(Car car) {
@@ -23,6 +29,10 @@ public class CarService{
     }
 
     public void delete(int id) {
+        Car car = carDAO.findOne(id);
+        if (car == null) {
+            throw new RuntimeException("Неможливо видалити, авто з таким id не знайдено");
+        }
         carDAO.delete(id);
     }
 

@@ -1,4 +1,5 @@
-package org.example.Homework10;
+package org.example.Homework10.dao;
+import org.example.Homework10.models.Car;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
